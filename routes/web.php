@@ -24,14 +24,16 @@ Route::get('/', function () {
 
 Auth::routes();
 
-// ?
-
-Route::get('/admin', 'AdminController@index')->name('admin');
+// Route::get('/admin', 'AdminController@index')->name('admin');
 Route::resource('posts', 'Admin\PostController');
 
+Route::get('/admin', 'Admin\AdminController@index')->name('home');
 
-// Route::get('/admin', 'AdminController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/admin', 'AdminController@index')->name('home');
+// Route::middleware('auth')
+// ->namespace('Admin')
+// ->name('admin.')
+// ->prefix('admin')
+// ->group(function () {
+//     Route::get('/', 'AdminController@dashboard')->name('dashboard');
+//     Route::resource('posts', 'PostController');
+// });
